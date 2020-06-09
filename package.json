@@ -1,0 +1,41 @@
+{
+  "name": "jsdevelop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/curiouslad/jsdevelop.git"
+  },
+  "author": "Ashish Bansal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/curiouslad/jsdevelop/issues"
+  },
+  "homepage": "https://github.com/curiouslad/jsdevelop#readme",
+  "dependencies": {
+    "monaco-editor-webpack-plugin": "^1.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.3.11",
+    "react-monaco-editor": "^0.36.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8"
+  }
+}
