@@ -39,7 +39,13 @@ module.exports = {
             }
         ]
     },
-    resolve: { extensions: ["*", ".js", ".jsx"] },
+    resolve: { 
+        alias: {
+            Components: path.resolve(__dirname, './src/components'),
+            Containers: path.resolve(__dirname, './src/containers')
+        },
+        extensions: ["*", ".js", ".jsx"] 
+    },
     output: {
         path: path.resolve(__dirname, "build/"),
         publicPath: "/build/",
