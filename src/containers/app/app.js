@@ -1,17 +1,31 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
-import "./App.css";
+import "./app.css";
 import EdtitorSection from "Containers/editorSection";
 import OutputContainer from "Containers/outputContainer";
+import {PanelToggler} from "Components/panelToggler";
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             visibleContainers: {
-                html: true,
-                css: true,
-                javascript: true,
+                html: {
+                    visible: true,
+                    label: "HTML"
+                },
+                css: {
+                    visible: true,
+                    label: "CSS"
+                },
+                javascript: {
+                    visible: true,
+                    label: "Javascript"
+                },
+                output: {
+                    visible: true,
+                    label: "Result"
+                }
             },
             iframeContent: {
                 html: "",
@@ -24,11 +38,13 @@ class App extends Component {
                 html: "",
                 css: "",
                 javascript: ""
-            }
+            },
+            availableSections: ["html", "css", "javascript"]
         }
 
         this.handleEditorOnChange = this.handleEditorOnChange.bind(this);
         this.executeCodeToIframe = this.executeCodeToIframe.bind(this);
+        this.toggleContainers = this.toggleContainers.bind(this);
     };
 
     handleEditorOnChange(editorType, code, event) {
@@ -41,21 +57,29 @@ class App extends Component {
     }
 
     toggleContainers(containerName) {
-        const currState = this.state[containerName]["visible"];
+        console.log(containerName);
+        const {visibleContainers} = this.state;
+        visibleContainers[containerName].visible = !visibleContainers[containerName].visible;
+        this.setState({visibleContainers});
     };
 
     render() {
         const { visibleContainers, iframeContent } = this.state;
-        const { editorContent } = this.global;
+        const { editorContent, availableSections } = this.global;
         return (
             <div className="App">
-                <h1> Lets Code Something together</h1>
-                <button type="button" onClick={this.executeCodeToIframe}>Run</button>
+                <h1 className="title"> Lets Code Something together</h1>
+                <PanelToggler 
+                    visibleContainers={visibleContainers} 
+                    onButtonClick={this.toggleContainers} 
+                    onExecuteClick={this.executeCodeToIframe}
+                />
                 <div className="container_section">
                     <EdtitorSection
-                        visibleContainers={visibleContainers}
                         editorContent={editorContent}
                         onCodeChange={this.handleEditorOnChange}
+                        availableSections = {availableSections}
+                        visibleContainers = {visibleContainers}
                     />
                     <OutputContainer content={iframeContent} />
                 </div>

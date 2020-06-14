@@ -6,7 +6,7 @@ class Editor extends Component {
         super(props);
     }
     editorDidMount(editor, monaco) {
-        editor.focus();
+        // editor.focus();
     }
 
     onCodeChange(newVal, e) {
@@ -14,21 +14,26 @@ class Editor extends Component {
     }
 
     render() {
-        const { language, code } = this.props;
+        const { language, code, visible } = this.props;
         const options = {
             selectOnLineNumbers: true
         };
         return (
-            <MonacoEditor
-                width="30%"
-                height="600"
-                language={language}
-                theme="vs-dark"
-                value={code}
-                options={options}
-                onChange={this.onCodeChange.bind(this)}
-                editorDidMount={this.editorDidMount}
-            />
+            <>
+                {
+                    visible ? (
+                        <MonacoEditor
+                            height="82vh"
+                            language={language}
+                            theme="vs-dark"
+                            value={code}
+                            options={options}
+                            onChange={this.onCodeChange.bind(this)}
+                            editorDidMount={this.editorDidMount}
+                        />
+                    ) : null
+                }
+            </>
         );
     }
 }

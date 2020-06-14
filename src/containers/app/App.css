@@ -1,8 +1,13 @@
 .App {
-    margin: 1rem;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    text-align: center;
+    color: darkblue;
 }
 
 .container_section {
     display: flex;
+    justify-content: space-around;
 }

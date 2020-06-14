@@ -7,20 +7,19 @@ class EditorSection extends Component {
   }
 
   displayContainers() {
-    const { visibleContainers, onCodeChange, editorContent } = this.props;
+    const { onCodeChange, editorContent, availableSections, visibleContainers } = this.props;
     let htmlJSX = [];
 
-    Object.keys(visibleContainers).forEach((container, i) => {
-      if (visibleContainers[container]) {
+    availableSections.forEach((container, i) => {
         htmlJSX.push(
           <Editor
             language={container}
             onChange={onCodeChange.bind(undefined, container)}
             code={editorContent[container]}
             key={i}
+            visible={visibleContainers[container]["visible"]}
           />
         );
-      }
     });
     return htmlJSX;
   }

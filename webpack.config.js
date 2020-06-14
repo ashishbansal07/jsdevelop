@@ -19,15 +19,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 include: APP_DIR,
-                use: [{
-                    loader: 'style-loader',
-                }, {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        namedExport: true,
-                    },
-                }],
+                use: ['style-loader', 'css-loader']
             }, {
                 test: /\.css$/,
                 include: MONACO_DIR,

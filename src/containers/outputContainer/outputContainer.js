@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import "./styles.css";
 class OutputContainer extends Component {
     constructor(props) {
         super(props);
@@ -59,6 +59,7 @@ class OutputContainer extends Component {
                 frameBorder="0"
                 name="<proxy>"
                 src={src}
+                className="iframe_container"
             />
         );
     }
