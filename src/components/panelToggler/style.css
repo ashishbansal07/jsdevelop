@@ -12,6 +12,10 @@
     font-size: 14px;
 }
 
+.panel_button:last-child {
+    float: right;
+}
+
 .active {
     background: #eaebfc;
 }

@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader";
 import "./app.css";
 import EdtitorSection from "Containers/editorSection";
 import OutputContainer from "Containers/outputContainer";
-import {PanelToggler} from "Components/panelToggler";
+import PanelToggler from "Components/panelToggler";
 
 class App extends Component {
     constructor(props) {
@@ -35,9 +35,9 @@ class App extends Component {
         };
         this.global = {
             editorContent: {
-                html: "",
-                css: "",
-                javascript: ""
+                html: "<p>Hello, world!</p>",
+                css: "p { color: blue; }",
+                javascript: "console.log('hi')"
             },
             availableSections: ["html", "css", "javascript"]
         }
@@ -68,7 +68,7 @@ class App extends Component {
         const { editorContent, availableSections } = this.global;
         return (
             <div className="App">
-                <h1 className="title"> Lets Code Something together</h1>
+                <h1 className="title"> JS Develop</h1>
                 <PanelToggler 
                     visibleContainers={visibleContainers} 
                     onButtonClick={this.toggleContainers} 
@@ -81,7 +81,7 @@ class App extends Component {
                         availableSections = {availableSections}
                         visibleContainers = {visibleContainers}
                     />
-                    <OutputContainer content={iframeContent} />
+                    {visibleContainers.output.visible ? (<OutputContainer content={iframeContent} />) : null}
                 </div>
             </div>
         );

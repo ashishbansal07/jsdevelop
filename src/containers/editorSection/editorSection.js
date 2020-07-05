@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Editor from 'Components/editor';
+import "./style.css";
 
 class EditorSection extends Component {
   constructor(props) {
@@ -8,19 +9,35 @@ class EditorSection extends Component {
 
   displayContainers() {
     const { onCodeChange, editorContent, availableSections, visibleContainers } = this.props;
-    let htmlJSX = [];
+    let htmlJSX = (
+      <>
+        {
+          availableSections.map((container, i) => {
+            return (
+              <>
+                {
+                  (visibleContainers[container]["visible"] ? (
+                    <div className="editor-container" key={i}>
+                      <Editor
+                        language={container}
+                        onChange={onCodeChange.bind(undefined, container)}
+                        code={editorContent[container]}
+                        key={i}
+                        visible={visibleContainers[container]["visible"]}
+                      />
+                    </div>
+                  ) : null)
+                }
+              </>
+              
+            );
+          })
+        }
+      </>
 
-    availableSections.forEach((container, i) => {
-        htmlJSX.push(
-          <Editor
-            language={container}
-            onChange={onCodeChange.bind(undefined, container)}
-            code={editorContent[container]}
-            key={i}
-            visible={visibleContainers[container]["visible"]}
-          />
-        );
-    });
+    );
+
+    
     return htmlJSX;
   }
 

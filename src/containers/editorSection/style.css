@@ -1,0 +1,5 @@
+.editor-container {
+    border: 2px solid white;
+    width: 100%;
+    flex: 1 1 auto;
+}

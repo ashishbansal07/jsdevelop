@@ -10,4 +10,5 @@
 .container_section {
     display: flex;
     justify-content: space-around;
+    background: #e2e1e0;
 }

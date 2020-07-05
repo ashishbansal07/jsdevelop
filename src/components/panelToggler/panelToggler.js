@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export function PanelToggler(props) {
+const PanelToggler = (props) => {
     const { visibleContainers, onButtonClick, onExecuteClick } = props;
 
     return (
@@ -20,3 +20,5 @@ export function PanelToggler(props) {
         </div>
     );
 };
+
+export default PanelToggler;
